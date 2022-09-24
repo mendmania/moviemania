@@ -1,0 +1,5 @@
+@use "../abstracts/variables" as abstract;
+
+body {
+    background-color: abstract.$primary_color;
+}

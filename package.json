@@ -1,0 +1,32 @@
+{
+  "name": "moviemania",
+  "version": "1.0.0",
+  "description": "no description right now ;P",  
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mendmania/moviemania.git"
+  },
+  "keywords": [
+    "movie",
+    "nuxt3",
+    "bestweb"
+  ],
+  "author": "mendmania",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mendmania/moviemania/issues"
+  },
+  "homepage": "https://github.com/mendmania/moviemania#readme",
+  "devDependencies": {
+    "nuxt": "^3.0.0-rc.11",
+    "sass": "^1.54.9",
+    "sass-loader": "^13.0.2"
+  }
+}
