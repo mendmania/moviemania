@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <main class="l-content">
       <slot />
-    </div>
+    </main>
 </template>

@@ -6,7 +6,12 @@ console.log(meni)
     
 <template>
   <div>
-    <NuxtPage />
+    <PageHeader />
+    <PageBody>
+      <NuxtPage />
+    </PageBody>
+    <PageFooter />
+    <div id="cardpreview"/>
   </div>
 </template>
     

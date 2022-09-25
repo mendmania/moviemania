@@ -1,11 +1,11 @@
 <script setup>
+    
 </script>
 
 <template>
-    <div class="c-header">
-        header
-    </div>
+  
 </template>
 
 <style>
+
 </style>

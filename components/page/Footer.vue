@@ -2,7 +2,9 @@
 </script>
 
 <template>
-    footer
+    <div class="c-footer">
+        footer
+    </div>
 </template>
 
 <style>
