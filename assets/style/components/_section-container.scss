@@ -1,0 +1,15 @@
+.c-section-container {
+    padding: 16px 0;
+    color: white;
+
+    &__name {
+        font-weight: bold;
+        font-size: 24px;
+        padding-bottom: 8px;
+    }
+
+    &__cards {
+        position: relative;
+        overflow: hidden;
+    }
+}
