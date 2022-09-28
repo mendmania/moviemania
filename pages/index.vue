@@ -1,4 +1,23 @@
+<script setup>
+getShowsTest();
+
+// let hoverShowData = useState("hoverShowData");
+// let cardHover = useState("cardHover");
+// let right = useState("right");
+// let left = useState("left");
+// let isHovering = useState("isHovering");
+</script>
+
 <template>
-    <h1>Index Page</h1>
-    <NuxtWelcome />
+  <SectionContainer>
+    <SectionWrapper />
+    <!-- <CardHover :show="hoverShowData"
+               v-if="cardHover"
+               :left="left"
+               :right="right"
+               :isHovering="isHovering"
+               ref="child" /> -->
+  </SectionContainer>
+
+
 </template>
