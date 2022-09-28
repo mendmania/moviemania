@@ -1,8 +1,8 @@
 <script setup>
 let show = useState("hoverShowData");
-let cardHover = useState("cardHover");
 let right = useState("right");
 let left = useState("left");
+let cardHover = useState("cardHover");
 let isHovering = useState("isHovering");
 
 const animate = ref(false);
@@ -17,9 +17,22 @@ const vMyDirective = {
   },
 };
 
+
 function onMouseLeave() {
   isHovering.value = false;
   cardHover.value = false;
+}
+
+const hoverTimer = useState("hoverTimer");
+
+const router = useRouter()
+function goToDetails(data) {
+
+  // console.error("hoverTimer.value",hoverTimer.value)
+  // clearTimeout(hoverTimer.value)
+
+  // onMouseLeave()
+  router.push('details/'+data)
 }
 
 const leftPosition = left.value - 0; //110
@@ -28,8 +41,8 @@ const rightPosition = -right.value //- 210 - 200;
       
   <template>
   <Teleport to="#cardpreview">
-    <NuxtLink :to="'/details/'+show.id">
       <div class="c-card__hover"
+      @click="goToDetails(show.name)"
            @mouseleave="onMouseLeave"
            :style="`transform: translate3d(calc(${leftPosition}px - 16% - 16%), ${rightPosition}px, 10px)`">
         <div class="c-card__hover__content c-card__holder--16-9"
@@ -66,6 +79,5 @@ const rightPosition = -right.value //- 210 - 200;
           </div>
         </div>
       </div>
-    </NuxtLink>
   </Teleport>
 </template>

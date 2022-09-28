@@ -1,0 +1,14 @@
+.search-page {
+    top: -300px;
+    position: relative;
+    padding: 0 32px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .c-card__holder {
+        box-sizing: border-box;
+        width: 10%;
+        padding: 10px;
+        margin: unset !important;
+    }
+}

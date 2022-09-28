@@ -1,0 +1,44 @@
+.c-details-page {
+    color: #fff;
+    padding-bottom: 60px;
+
+    &__short-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__name {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    &__description {
+        font-size: 18px;
+        color: rgb(225, 225, 225);
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        font-weight: bolder;
+        cursor: pointer;
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    &__premier {
+        padding-bottom: 8px;
+    }
+
+    &__website {
+        font-style: italic;
+        color: lightblue;
+
+        a:-webkit-any-link {
+            color: lightblue;
+        }
+    }
+}
