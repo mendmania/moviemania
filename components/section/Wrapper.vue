@@ -2,29 +2,23 @@
 import CONFIG from "@/config/config";
 const { scrollStep } = CONFIG.slider;
 
-const shows = useState("allShows");
+const scrollStepCalculated = (scrollStep - 1) * 10
+const isSliding = ref(false);
 
 const props = defineProps({
   showsByGenreAndRating: Object,
 });
 
-const isSliding = ref(false);
 
 const { showsByGenreAndRating } = toRefs(props);
-// console.error("showsByGenreAndRating",showss)
-console.error("shows.value", showsByGenreAndRating.value);
 
 let isHoveringCancelled = useState("isHoveringCancelled");
+
 onMounted(() => {
   isHoveringCancelled.value = false;
 });
 
-let scrollAnimationCount = useState(
-  "scrollAnimationCount",
-  () => -(scrollStep - 1) * 10
-);
-
-showsByGenreAndRating.value.scrollAnimationCount = -(scrollStep - 1) * 10;
+showsByGenreAndRating.value.scrollAnimationCount = -scrollStepCalculated;
 
 let supportAnimationClass = useState("supportAnimationClass", () => "");
 
@@ -33,18 +27,19 @@ function animation() {
 }
 
 function scrollAnimationCountChange(data) {
-  console.log("working", data,(scrollStep - 1) * 10);
+  console.log("working", data,scrollStepCalculated);
 
   if (isSliding.value) return;
 
   isSliding.value = true;
   supportAnimationClass.value = "slider-animation";
+
   if (data === "right") {
-    showsByGenreAndRating.value.scrollAnimationCount -= (scrollStep - 1) * 10; //90;
+    showsByGenreAndRating.value.scrollAnimationCount -= scrollStepCalculated; //90;
 
     setTimeout(function () {
       supportAnimationClass.value = "";
-      showsByGenreAndRating.value.scrollAnimationCount += (scrollStep - 1) * 10; //90;
+      showsByGenreAndRating.value.scrollAnimationCount += scrollStepCalculated; //90;
 
       const els = showsByGenreAndRating.value.shows.splice(0, scrollStep - 1);
       showsByGenreAndRating.value.shows.push(...els);
@@ -52,11 +47,11 @@ function scrollAnimationCountChange(data) {
       isSliding.value = false;
     }, 900);
   } else if (data === "left") {
-    showsByGenreAndRating.value.scrollAnimationCount += (scrollStep - 1) * 10;
+    showsByGenreAndRating.value.scrollAnimationCount += scrollStepCalculated;
 
     setTimeout(function () {
       supportAnimationClass.value = "";
-      showsByGenreAndRating.value.scrollAnimationCount -= (scrollStep - 1) * 10;
+      showsByGenreAndRating.value.scrollAnimationCount -= scrollStepCalculated;
 
       const els = showsByGenreAndRating.value.shows.splice(-(scrollStep - 1));
       showsByGenreAndRating.value.shows.unshift(...els);
@@ -79,7 +74,7 @@ function getOnlyStepShows() {
 
 <template>
   <SectionScroll :variant="'left'"
-                 :scrollAnimationCountt="showsByGenreAndRating.scrollAnimationCount"
+                 :scrollAnimationCount="showsByGenreAndRating.scrollAnimationCount"
                  @scrollAnimationCountChange="scrollAnimationCountChange" />
   <div class="c-section">
     <div class="c-section__wrapper"
@@ -89,6 +84,6 @@ function getOnlyStepShows() {
     </div>
   </div>
   <SectionScroll :variant="'right'"
-                 :scrollAnimationCountt="showsByGenreAndRating.scrollAnimationCount"
+                 :scrollAnimationCount="showsByGenreAndRating.scrollAnimationCount"
                  @scrollAnimationCountChange="scrollAnimationCountChange" />
 </template>

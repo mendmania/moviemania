@@ -10,8 +10,8 @@ export const getShowsTest = () => {
 
     const { shows } = allShows
     // save offer response data
-    const actionShows = 
-         shows.filter(u => u.genres.includes("Action"))
+    const actionShows =
+        shows.filter(u => u.genres.includes("Action"))
             .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
 
     const comedyShows = shows.filter(u => u.genres.includes("Comedy"))
@@ -33,17 +33,17 @@ export const getShowsTest = () => {
             },
             {
                 shows: comedyShows,
-                scrollAnimationCount:90,
+                scrollAnimationCount: 90,
                 sectionName: 'Comedy',
             },
             {
                 shows: romanceShows,
-                scrollAnimationCount:90,
+                scrollAnimationCount: 90,
                 sectionName: 'Romance',
             },
             {
                 shows: horrorShows,
-                scrollAnimationCount:90,
+                scrollAnimationCount: 90,
                 sectionName: 'Horror',
             }
 
@@ -121,12 +121,15 @@ export const getDetailsByName = async (data) => {
     const config = useRuntimeConfig()
     const apiBase = config.public.apiBase
 
-    var res = await $fetch(`${apiBase}singlesearch/shows?q=${data}`, {
+    //remove " " for better results
+    const searchByName = data.split(" ").join("")
+    console.log("kari", searchByName)
+
+    var res = await $fetch(`${apiBase}singlesearch/shows?q=${searchByName}`, {
         // headers: headers,
         async onResponse({ request, response, options }) {
             // Log response
             console.log('[fetch response]', response, response.status)
-
 
             if (response.status === 400) {
                 useState('apiError', () => (

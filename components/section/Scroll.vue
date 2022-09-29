@@ -5,18 +5,18 @@ const {scrollStep} = CONFIG.slider
 const shows = useState("allShows");
 // const isSliding = ref(false);
 
-let scrollAnimationCount = useState("scrollAnimationCount");
+// let scrollAnimationCount = useState("scrollAnimationCount");
 
 let supportAnimationClass = useState("supportAnimationClass");
 
 const props = defineProps({
   variant: String,
-  scrollAnimationCountt:Number,
+  scrollAnimationCount:Number,
 });
 
-const {scrollAnimationCountt} = toRefs(props)
+const {scrollAnimationCount} = toRefs(props)
 
-console.error("scrollAnimationCountt",scrollAnimationCountt.value)
+// console.error("scrollAnimationCount",scrollAnimationCount.value)
 
 const emit = defineEmits(['scrollAnimationCountChange']);
 
