@@ -14,7 +14,8 @@ let left = useState("left");
 let isHovering = useState("isHovering");
 
 const isUsingMobile = ref(false)
-getShowsTest();
+await getShows()
+
 onMounted(()=>{
   isUsingMobile.value = !!isMobile.any()
 })
@@ -23,10 +24,11 @@ onMounted(()=>{
 <template>
   <div :class="isUsingMobile ? 'is-mobile':''">
     <PageHeader />
-    <PageSearch v-if="searchTerm" />
-    <PageBody v-else>
+       <PageBody v-show="!searchTerm">
       <NuxtPage  />
     </PageBody>
+    <PageSearch v-show="searchTerm" />
+ 
     <PageFooter />
     <CardHover :show="hoverShowData"
                v-if="cardHover"

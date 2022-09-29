@@ -10,7 +10,6 @@ const animate = ref(false);
 const vMyDirective = {
   mounted: (el) => {
     // do something with the element
-    console.log("vMyDirective mounted");
     setTimeout(() => {
       animate.value = true;
     }, 0);
@@ -30,7 +29,6 @@ let isHoveringCancelled = useState("isHoveringCancelled");
 const router = useRouter()
 function goToDetails(data) {
 
-  // console.error("hoverTimer.value",hoverTimer.value)
   onMouseLeave()
   clearTimeout(hoverTimer.value)
   isHoveringCancelled.value = true

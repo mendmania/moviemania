@@ -66,7 +66,7 @@ function onMouseEnterAction(event) {
 }
 
 function onMouseEnter(ev) {
-  onMouseEnterAction(ev);
+  // onMouseEnterAction(ev);
 }
 
 function onMouseLeave() {
@@ -76,7 +76,8 @@ function onMouseLeave() {
 
 function goToDetails(data) {
   console.log('dsada',!!isMobile.any())
-  if (allowHover) router.push("/details/" + data.split(" ")[0]);
+  // if (allowHover) 
+  router.push("/details/" + data.split(" ")[0]);
 
   console.log(data);
   // isHoveringCancelled.value = true
