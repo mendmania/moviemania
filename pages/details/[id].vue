@@ -10,10 +10,13 @@ customBackground.value = showDetails.image.original;
 onMounted(() => {
   const headerBackgroundEl = document.querySelector("#header-background");
   headerBackgroundEl.style = `background-image: url('${showDetails.image.original}')`;
+  var s = showDetails
 });
+
 </script>
 
 <template>
+  {{s}}
   <div class="c-details-page">
     <div class="c-details-page__short-content">
       <div class="c-details-page__name">

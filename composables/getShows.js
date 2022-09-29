@@ -121,11 +121,7 @@ export const getDetailsByName = async (data) => {
     const config = useRuntimeConfig()
     const apiBase = config.public.apiBase
 
-    //remove " " for better results
-    const searchByName = data.split(" ").join("")
-    console.log("kari", searchByName)
-
-    var res = await $fetch(`${apiBase}singlesearch/shows?q=${searchByName}`, {
+    var res = await $fetch(`${apiBase}singlesearch/shows?q=${data}`, {
         // headers: headers,
         async onResponse({ request, response, options }) {
             // Log response

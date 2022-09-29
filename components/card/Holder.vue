@@ -1,13 +1,23 @@
 <script setup>
+import { isMobile } from "@/utils/isMobile";
+
+
+const allowHover = ref(false)
+onMounted(()=>{
+   allowHover.value = !!isMobile.any()
+})
+
+const router = useRouter()
+
 const cardRef = ref(null);
 
-let hoverShowData = useState("hoverShowData", () => (0));
+let hoverShowData = useState("hoverShowData", () => 0);
 
-let cardHover = useState("cardHover", () => (false));
-let right = useState("right", () => (0));
-let left = useState("left", () => (0));
-let isHovering = useState("isHovering", () => (false));
-let isHoveringCancelled = useState("isHoveringCancelled", () =>(false));
+let cardHover = useState("cardHover", () => false);
+let right = useState("right", () => 0);
+let left = useState("left", () => 0);
+let isHovering = useState("isHovering", () => false);
+let isHoveringCancelled = useState("isHoveringCancelled", () => false);
 
 const props = defineProps({
   show: Object,
@@ -17,10 +27,24 @@ const { show } = toRefs(props);
 
 // let hoverTimer = ref(null);
 
-const hoverTimer = useState("hoverTimer", () => (null));
+const hoverTimer = useState("hoverTimer", () => null);
 
-function onMouseEnterAction() {
+function getOffset(el) {
+  const rect = el.getBoundingClientRect();
+  return {
+    left: rect.left + window.scrollX,
+    top: rect.top + window.scrollY,
+  };
+}
+
+function onMouseEnterAction(event) {
+  if(!allowHover) return
+
   isHovering.value = true;
+
+  var elPosition = getOffset(event.srcElement);
+
+  console.log("Elementt is ", elPosition);
 
   left.value = cardRef.value.getBoundingClientRect().x;
 
@@ -31,11 +55,8 @@ function onMouseEnterAction() {
   let elemRect = cardRef.value.getBoundingClientRect();
   let offset = elemRect.top - bodyRect.top;
 
-  right.value = offset; ///+ 200;
-  console.log(
-    "Element is " + offset + " vertical pixels from <body>",
-    document.body.getBoundingClientRect()
-  );
+  // right.value = offset; ///+ 200;
+  right.value = elPosition.top; ///+ 200;
 
   console.error("positions", "left:", left.value, "right:", right.value);
   hoverTimer.value = setTimeout(function () {
@@ -45,7 +66,7 @@ function onMouseEnterAction() {
 }
 
 function onMouseEnter(ev) {
-  onMouseEnterAction();
+  onMouseEnterAction(ev);
 }
 
 function onMouseLeave() {
@@ -54,6 +75,9 @@ function onMouseLeave() {
 }
 
 function goToDetails(data) {
+  console.log('dsada',!!isMobile.any())
+  if (allowHover) router.push("/details/" + data.split(" ")[0]);
+
   console.log(data);
   // isHoveringCancelled.value = true
   // clearTimeout(hoverTimer.value);
@@ -64,7 +88,7 @@ function goToDetails(data) {
 <template>
   <div :id="`card-${show.id}`"
        ref="cardRef"
-       @click="goToDetails(show)"
+       @click="goToDetails(show.name)"
        class="c-card__holder">
 
     <CardImage ref="card-image-ref"
