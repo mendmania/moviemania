@@ -1,5 +1,6 @@
 @use "./components/components.scss";
 @use "./layout/layout.scss";
+@use "./is-mobile";
 
 .meni {
     background-color: red;
