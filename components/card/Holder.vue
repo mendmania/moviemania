@@ -17,9 +17,7 @@ const { show } = toRefs(props);
 
 // let hoverTimer = ref(null);
 
-const hoverTimer = useState("hoverTimer", () => {
-  null;
-});
+const hoverTimer = useState("hoverTimer", () => (null));
 
 function onMouseEnterAction() {
   isHovering.value = true;
@@ -41,7 +39,6 @@ function onMouseEnterAction() {
 
   console.error("positions", "left:", left.value, "right:", right.value);
   hoverTimer.value = setTimeout(function () {
-    console.log("isHoveringisHoveringisHovering",isHovering,isHoveringCancelled.value)
     hoverShowData.value = show.value;
     if (isHovering.value && !isHoveringCancelled.value) cardHover.value = true;
   }, 1200);
@@ -58,9 +55,9 @@ function onMouseLeave() {
 
 function goToDetails(data) {
   console.log(data);
-  isHoveringCancelled.value = true
-  clearTimeout(hoverTimer.value);
-  isHovering.value = false;
+  // isHoveringCancelled.value = true
+  // clearTimeout(hoverTimer.value);
+  // isHovering.value = false;
 }
 </script>
     

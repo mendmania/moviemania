@@ -2,6 +2,8 @@
 <script setup>
 
 const searchTerm = useState("searchTerm")
+const showsBySearch = useState('showsBySearch', () => []);
+
 
 
 let hoverShowData = useState("hoverShowData");

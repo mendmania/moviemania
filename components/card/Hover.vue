@@ -24,14 +24,17 @@ function onMouseLeave() {
 }
 
 const hoverTimer = useState("hoverTimer");
+let isHoveringCancelled = useState("isHoveringCancelled");
+
 
 const router = useRouter()
 function goToDetails(data) {
 
   // console.error("hoverTimer.value",hoverTimer.value)
-  // clearTimeout(hoverTimer.value)
+  onMouseLeave()
+  clearTimeout(hoverTimer.value)
+  isHoveringCancelled.value = true
 
-  // onMouseLeave()
   router.push('details/'+data)
 }
 

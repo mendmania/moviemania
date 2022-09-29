@@ -1,8 +1,22 @@
 <script setup>
 const searchTerm = useState("searchTerm", () => null);
+const showsBySearch = useState("showsBySearch");
 const router = useRouter();
 
-const customBackground =  useState('customBackground', ()=>(null))
+let res = ref([]);
+
+const myVal = computed({
+  get() {
+    return searchTerm.value;
+  },
+  async set(val) {
+    res = await getShowsByName(val);
+    showsBySearch.value = res;
+    searchTerm.value = val;
+  },
+});
+
+const customBackground = useState("customBackground", () => null);
 const urlHeroBanner = await import("@/assets/images/hero-banner.png");
 
 function goToHomePage() {
@@ -25,7 +39,7 @@ function goToHomePage() {
 
       <div class="c-header__search">
         <input placeholder="Search"
-               v-model="searchTerm" />
+               v-model="myVal" />
         <img src="@/assets/icons/search.svg" />
       </div>
     </div>

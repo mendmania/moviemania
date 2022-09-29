@@ -8,6 +8,4 @@ getShowsTest();
   <SectionContainer>
     <SectionWrapper />
   </SectionContainer>
-
-
 </template>

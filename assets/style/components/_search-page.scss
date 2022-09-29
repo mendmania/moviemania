@@ -4,11 +4,18 @@
     padding: 0 32px;
     display: flex;
     flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
 
     .c-card__holder {
         box-sizing: border-box;
         width: 10%;
         padding: 10px;
         margin: unset !important;
+    }
+
+    &__no-results {
+        color: #fff;
+        font-size: 32px;
     }
 }

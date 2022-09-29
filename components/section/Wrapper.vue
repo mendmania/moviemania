@@ -4,6 +4,11 @@ const {scrollStep} = CONFIG.slider
 
 const shows = useState("allShows");
 
+let isHoveringCancelled = useState("isHoveringCancelled");
+onMounted(()=>{
+  isHoveringCancelled.value = false
+})
+
 let scrollAnimationCount = useState("scrollAnimationCount", () => -(scrollStep-1)*10);
 let supportAnimationClass = useState('supportAnimationClass', () =>'')
 
