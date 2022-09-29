@@ -17,7 +17,6 @@ const isUsingMobile = ref(false)
 getShowsTest();
 onMounted(()=>{
   isUsingMobile.value = !!isMobile.any()
-  console.error('----------------',isMobile.any())
 })
 </script>
     
