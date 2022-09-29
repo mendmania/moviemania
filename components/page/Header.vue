@@ -17,6 +17,7 @@ const myVal = computed({
 });
 
 const customBackground = useState("customBackground", () => null);
+
 const urlHeroBanner = await import("@/assets/images/hero-banner.png");
 
 function goToHomePage() {
@@ -30,12 +31,11 @@ function goToHomePage() {
        :style="`backgroundImage: url('${customBackground ? customBackground : urlHeroBanner.default}')`">
     <div class="c-header__overlay" />
     <div class="c-header__holder">
-
-      <div class="c-header__title"
-           @click="goToHomePage">
-        <img src="@/assets/icons/tv.svg" />
-        <span>Moviemania</span>
-      </div>
+        <div class="c-header__title"
+             @click="goToHomePage">
+          <img src="@/assets/icons/tv.svg" />
+          <span>Moviemania</span>
+        </div>
 
       <div class="c-header__search">
         <input placeholder="Search"

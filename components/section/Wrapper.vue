@@ -27,7 +27,6 @@ function animation() {
 }
 
 function scrollAnimationCountChange(data) {
-  console.log("working", data,scrollStepCalculated);
 
   if (isSliding.value) return;
 
@@ -60,8 +59,6 @@ function scrollAnimationCountChange(data) {
     }, 900);
   }
 }
-
-console.error(scrollStep);
 
 //render card 3 times showing
 const step = 3 * scrollStep;
