@@ -1,7 +1,10 @@
 
 <script setup>
-const meni = 1;
-console.log(meni)
+
+const searchTerm = useState("searchTerm")
+const showsBySearch = useState('showsBySearch', () => []);
+
+
 
 let hoverShowData = useState("hoverShowData");
 let cardHover = useState("cardHover");
@@ -13,8 +16,9 @@ let isHovering = useState("isHovering");
 <template>
   <div>
     <PageHeader />
-    <PageBody>
-      <NuxtPage />
+    <PageSearch v-if="searchTerm" />
+    <PageBody v-else>
+      <NuxtPage  />
     </PageBody>
     <PageFooter />
     <CardHover :show="hoverShowData"

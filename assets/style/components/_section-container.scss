@@ -2,6 +2,14 @@
     padding: 16px 0;
     color: white;
 
+    &:hover {
+        .c-scroll__section {
+            cursor: pointer;
+            opacity: 1;
+            transform: translate3d(0, 0px, 0);
+        }
+    }
+
     &__name {
         font-weight: bold;
         font-size: 24px;
@@ -11,5 +19,16 @@
     &__cards {
         position: relative;
         overflow: hidden;
+
+        &:after {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            content: "";
+            background: #141414;
+            height: 100% !important;
+            left: 95%;
+        }
     }
 }

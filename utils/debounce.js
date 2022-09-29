@@ -1,4 +1,4 @@
-export function mDebounce(func, timeout = 300){
+export default function mDebounce(func, timeout = 300){
     let timer;
     
     return (...args) => {

@@ -1,22 +1,13 @@
 <script setup>
 const cardRef = ref(null);
 
-let hoverShowData = useState("hoverShowData", () => {
-  false;
-});
+let hoverShowData = useState("hoverShowData", () => (0));
 
-let cardHover = useState("cardHover", () => {
-  false;
-});
-let right = useState("right", () => {
-  0;
-});
-let left = useState("left", () => {
-  0;
-});
-let isHovering = useState("isHovering", () => {
-  false;
-});
+let cardHover = useState("cardHover", () => (false));
+let right = useState("right", () => (0));
+let left = useState("left", () => (0));
+let isHovering = useState("isHovering", () => (false));
+let isHoveringCancelled = useState("isHoveringCancelled", () =>(false));
 
 const props = defineProps({
   show: Object,
@@ -24,10 +15,12 @@ const props = defineProps({
 
 const { show } = toRefs(props);
 
-let hoverTimer = ref(null);
+// let hoverTimer = ref(null);
+
+const hoverTimer = useState("hoverTimer", () => (null));
 
 function onMouseEnterAction() {
-  isHovering = true;
+  isHovering.value = true;
 
   left.value = cardRef.value.getBoundingClientRect().x;
 
@@ -38,7 +31,7 @@ function onMouseEnterAction() {
   let elemRect = cardRef.value.getBoundingClientRect();
   let offset = elemRect.top - bodyRect.top;
 
-  right.value = offset ///+ 200;
+  right.value = offset; ///+ 200;
   console.log(
     "Element is " + offset + " vertical pixels from <body>",
     document.body.getBoundingClientRect()
@@ -47,7 +40,7 @@ function onMouseEnterAction() {
   console.error("positions", "left:", left.value, "right:", right.value);
   hoverTimer.value = setTimeout(function () {
     hoverShowData.value = show.value;
-    if (isHovering) cardHover.value = true;
+    if (isHovering.value && !isHoveringCancelled.value) cardHover.value = true;
   }, 1200);
 }
 
@@ -56,12 +49,15 @@ function onMouseEnter(ev) {
 }
 
 function onMouseLeave() {
-  isHovering = false;
+  isHovering.value = false;
   // cardHover.value = false
 }
 
 function goToDetails(data) {
   console.log(data);
+  // isHoveringCancelled.value = true
+  // clearTimeout(hoverTimer.value);
+  // isHovering.value = false;
 }
 </script>
     
