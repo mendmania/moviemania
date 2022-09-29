@@ -35,11 +35,11 @@ function goToDetails(data) {
   clearTimeout(hoverTimer.value)
   isHoveringCancelled.value = true
 
-  router.push('details/'+data)
+  router.push('/details/'+data.split(" ")[0])
 }
 
-const leftPosition = left.value - 0; //110
-const rightPosition = -right.value //- 210 - 200;
+const leftPosition = left.value; //110
+const rightPosition = right.value //- 210 - 200;
 </script>
       
   <template>
@@ -47,7 +47,7 @@ const rightPosition = -right.value //- 210 - 200;
       <div class="c-card__hover"
       @click="goToDetails(show.name)"
            @mouseleave="onMouseLeave"
-           :style="`transform: translate3d(calc(${leftPosition}px - 16% - 16%), ${rightPosition}px, 10px)`">
+           :style="`transform: translate3d(calc(${leftPosition}px - 60px), calc(${rightPosition}px - 1833.2725px), 0px)`">
         <div class="c-card__hover__content c-card__holder--16-9"
              v-my-directive
              :class="animate ? 'animate':''">

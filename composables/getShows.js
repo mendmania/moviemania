@@ -10,11 +10,9 @@ export const getShowsTest = () => {
 
     const { shows } = allShows
     // save offer response data
-    const actionShows = {
-        shows: shows.filter(u => u.genres.includes("Action"))
-            .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1),
-        animationCount: -90,
-    }
+    const actionShows =
+        shows.filter(u => u.genres.includes("Action"))
+            .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
 
     const comedyShows = shows.filter(u => u.genres.includes("Comedy"))
         .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
@@ -27,13 +25,29 @@ export const getShowsTest = () => {
 
 
     useState('allShowsByGenreAndRating', () => (
-        {
-            actionShows,
-            comedyShows,
-            romanceShows,
-            horrorShows
+        [
+            {
+                shows: actionShows,
+                scrollAnimationCount: 90,
+                sectionName: 'Action',
+            },
+            {
+                shows: comedyShows,
+                scrollAnimationCount: 90,
+                sectionName: 'Comedy',
+            },
+            {
+                shows: romanceShows,
+                scrollAnimationCount: 90,
+                sectionName: 'Romance',
+            },
+            {
+                shows: horrorShows,
+                scrollAnimationCount: 90,
+                sectionName: 'Horror',
+            }
 
-        }
+        ]
     ));
 
     useState('allShows', () => (
@@ -112,7 +126,6 @@ export const getDetailsByName = async (data) => {
         async onResponse({ request, response, options }) {
             // Log response
             console.log('[fetch response]', response, response.status)
-
 
             if (response.status === 400) {
                 useState('apiError', () => (

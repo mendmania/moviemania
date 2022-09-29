@@ -1,5 +1,6 @@
 
 <script setup>
+import {isMobile} from '@/utils/isMobile'
 
 const searchTerm = useState("searchTerm")
 const showsBySearch = useState('showsBySearch', () => []);
@@ -11,10 +12,16 @@ let cardHover = useState("cardHover");
 let right = useState("right");
 let left = useState("left");
 let isHovering = useState("isHovering");
+
+const isUsingMobile = ref(false)
+getShowsTest();
+onMounted(()=>{
+  isUsingMobile.value = !!isMobile.any()
+})
 </script>
     
 <template>
-  <div>
+  <div :class="isUsingMobile ? 'is-mobile':''">
     <PageHeader />
     <PageSearch v-if="searchTerm" />
     <PageBody v-else>
