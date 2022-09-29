@@ -10,8 +10,9 @@ export const getShowsTest = () => {
 
     const { shows } = allShows
     // save offer response data
-    const actionShows = {shows:shows.filter(u => u.genres.includes("Action"))
-        .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1),
+    const actionShows = {
+        shows: shows.filter(u => u.genres.includes("Action"))
+            .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1),
         animationCount: -90,
     }
 
@@ -60,7 +61,7 @@ export const getShows = async () => {
         // headers: headers,
         async onResponse({ request, response, options }) {
             // Log response
-            console.log('[fetch response]', response, process, response.status)
+            console.log('[fetch response]', response, response.status)
 
 
             if (response.status === 400) {
@@ -110,7 +111,7 @@ export const getDetailsByName = async (data) => {
         // headers: headers,
         async onResponse({ request, response, options }) {
             // Log response
-            console.log('[fetch response]', response, process, response.status)
+            console.log('[fetch response]', response, response.status)
 
 
             if (response.status === 400) {
@@ -153,7 +154,7 @@ export const getShowsByName = async (data) => {
         // headers: headers,
         async onResponse({ request, response, options }) {
             // Log response
-            console.log('[fetch response]', response, process, response.status)
+            console.log('[fetch response]', response, response.status)
 
 
             if (response.status === 400) {
@@ -182,9 +183,9 @@ export const getShowsByName = async (data) => {
         }
     })
 
-    const showsBySearch = res.map(c=>c.show)
-            const shows = new Shows()
-            shows.fromData(showsBySearch)
+    const showsBySearch = res.map(c => c.show)
+    const shows = new Shows()
+    shows.fromData(showsBySearch)
 
     return shows.shows
 }
