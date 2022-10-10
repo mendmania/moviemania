@@ -1,56 +1,4 @@
 import Shows from "~~/models/shows/Shows";
-// import m from '@/test'
-
-// export const getShowsTest = () => {
-//     const s = m
-//     console.log(s)
-
-//     const allShows = new Shows()
-//     allShows.fromData(s)
-
-//     const { shows } = allShows
-//     // save offer response data
-//     const actionShows =
-//         shows.filter(u => u.genres.includes("Action"))
-//             .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
-
-//     const comedyShows = shows.filter(u => u.genres.includes("Comedy"))
-//         .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
-
-//     const romanceShows = shows.filter(u => u.genres.includes("Romance"))
-//         .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
-
-//     const horrorShows = shows.filter(u => u.genres.includes("Horror"))
-//         .sort((a, b) => (a.rating.average < b.rating.average) ? 1 : -1)
-
-
-//     useState('allShowsByGenreAndRating', () => (
-//         [
-//             {
-//                 shows: actionShows,
-//                 scrollAnimationCount: 90,
-//                 sectionName: 'Action',
-//             },
-//             {
-//                 shows: comedyShows,
-//                 scrollAnimationCount: 90,
-//                 sectionName: 'Comedy',
-//             },
-//             {
-//                 shows: romanceShows,
-//                 scrollAnimationCount: 90,
-//                 sectionName: 'Romance',
-//             },
-//             {
-//                 shows: horrorShows,
-//                 scrollAnimationCount: 90,
-//                 sectionName: 'Horror',
-//             }
-
-//         ]
-//     ));
-
-// }
 
 export const getShows = async () => {
     const route = useRoute()
@@ -62,9 +10,7 @@ export const getShows = async () => {
     var { pending, data } = await $fetch(`${apiBase}shows?genres[]`, {
         // headers: headers,
         async onResponse({ request, response, options }) {
-            // Log response
             console.log('[fetch response]', response, response.status)
-
 
             if (response.status === 400) {
                 useState('apiError', () => (

@@ -1,15 +1,9 @@
 .c-section {
     position: relative;
     overflow: hidden;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
 
     &__wrapper {
-        // overflow-x: scroll;
-        // overflow-y: hidden;
         white-space: nowrap;
-        // transition: all 0.4s ease-in;
 
         &.slider-animation {
             transition: all 0.8s ease-in;

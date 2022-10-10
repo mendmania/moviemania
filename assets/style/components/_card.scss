@@ -2,12 +2,7 @@
 
 .c-card {
     &__wrapper {
-        // margin: 5px 10px;
         width: 10%;
-        // border: 1px solid #bbb;
-        // width: 190px;
-        // box-shadow: 3px 2px 5px 0px lightgrey;
-        // background-color: white;
         font-family: "Helvetica";
         position: relative;
         display: inline-block;
@@ -52,9 +47,7 @@
         position: absolute;
         border-radius: 4px;
         opacity: 1;
-        // background: black;
         width: 16%;
-        // height: 300px;
         border-radius: 4px;
         cursor: pointer;
 
@@ -75,8 +68,6 @@
             background-position: top;
             background-size: contain;
             background-repeat: no-repeat;
-            // height: 90px;
-            // width: 30%;
         }
 
         &--overlay {
@@ -89,12 +80,9 @@
 
     &__details {
         color: #fff;
-        // display: flex;
-        // flex-direction: column;
 
         &--spacing {
             margin: 10px 20px;
-            // justify-content: space-between;
         }
 
         &--text {

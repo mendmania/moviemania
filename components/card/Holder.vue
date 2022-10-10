@@ -25,8 +25,6 @@ const props = defineProps({
 
 const { show } = toRefs(props);
 
-// let hoverTimer = ref(null);
-
 const hoverTimer = useState("hoverTimer", () => null);
 
 function getOffset(el) {
@@ -44,21 +42,17 @@ function onMouseEnterAction(event) {
 
   var elPosition = getOffset(event.srcElement);
 
-  console.log("Elementt is ", elPosition);
 
   left.value = cardRef.value.getBoundingClientRect().x;
 
   clearTimeout(hoverTimer.value);
-  // right.value = cardRef.value.getBoundingClientRect().y;
 
   let bodyRect = document.body.getBoundingClientRect();
   let elemRect = cardRef.value.getBoundingClientRect();
   let offset = elemRect.top - bodyRect.top;
 
-  // right.value = offset; ///+ 200;
   right.value = elPosition.top; ///+ 200;
 
-  console.error("positions", "left:", left.value, "right:", right.value);
   hoverTimer.value = setTimeout(function () {
     hoverShowData.value = show.value;
     if (isHovering.value && !isHoveringCancelled.value) cardHover.value = true;
@@ -71,18 +65,11 @@ function onMouseEnter(ev) {
 
 function onMouseLeave() {
   isHovering.value = false;
-  // cardHover.value = false
 }
 
 function goToDetails(data) {
-  console.log('dsada',!!isMobile.any())
-  // if (allowHover) 
   router.push("/details/" + data.split(" ")[0]);
 
-  console.log(data);
-  // isHoveringCancelled.value = true
-  // clearTimeout(hoverTimer.value);
-  // isHovering.value = false;
 }
 </script>
     
